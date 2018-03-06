@@ -3,20 +3,16 @@
   "version": "0.0.1",
   "scripts": {
     "start": "npm run serve:ts",
-    "serve:dev": "npm run nodemon -- --inspect=5858 --config ./nodemon.json --exec {{pwd}}/node_modules/.bin/ts-node ./src/index.ts --project ./tsconfig.development.json",
+    "serve:dev": "nodemon --inspect=5858 --config ./nodemon.json --exec {{pwd}}/node_modules/.bin/ts-node ./src/index.ts --project ./tsconfig.development.json",
     "serve:prod": "node ./dist/index.js",
     "build:prod": "npm run compile:prod",
-    "compile:dev": "npm run tsc -- -p ./tsconfig.development.json -w",
-    "compile:prod": "npm run tsc -- -p ./tsconfig.production.json",
-    "clean:prod": "npm run rimraf -- ./dist/**/*",
-    "lint": "npm run tslint -- -c ./tslint.json -p ./tsconfig.json",
-    "lint:fix": "npm run tslint -- -c ./tslint.json -p ./tsconfig.json --fix",
+    "compile:dev": "tsc -p ./tsconfig.development.json -w",
+    "compile:prod": "tsc -p ./tsconfig.production.json",
+    "clean:prod": "rimraf ./dist/**/*",
+    "lint": "tslint -c ./tslint.json -p ./tsconfig.json",
+    "lint:fix": "tslint -c ./tslint.json -p ./tsconfig.json --fix",
     "test": "exit 0",
-    "ci:travis": "npm run lint && npm run test && npm run build:prod",
-    "nodemon": "./node_modules/.bin/nodemon",
-    "tslint": "./node_modules/.bin/tslint",
-    "rimraf": "./node_modules/.bin/rimraf",
-    "tsc": "./node_modules/.bin/tsc"
+    "ci:travis": "npm run lint && npm run test && npm run build:prod"
   },
   "devDependencies": {
     "@types/node": "^8.5.1",

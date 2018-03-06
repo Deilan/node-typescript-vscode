@@ -2,7 +2,7 @@ import { Greeter } from "./greeter";
 
 const greeter = new Greeter<string>("Hello, world");
 
-setTimeout(() => {
+setInterval(() => {
     // tslint:disable-next-line:no-console
     console.log(greeter.greet());
-}, 5000);
+}, 1000);
